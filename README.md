@@ -14,9 +14,9 @@ To simplify the cURL commands, this uses Sense from the Marvel plugin.
 
 1. Use the generator website to generate data.
 2. Copy the data into 'sampledata'
-3. ./senseGenerator.sh INDEX_NAME TYPE_NAME
+3. $./senseGenerator.sh INDEX_NAME TYPE_NAME
 
-    INDEX_NAME usually matches the json file, like 'consultations'.
+    INDEX_NAME can be whatever you want but usually matches the object you are creating.
     TYPE_NAME is usually just for debugging like 'test1'
 
 4. This will have copied all the curl command to your clipboard. Simply paste into the Sense window and run. It will have also created a file INDEX_NAME_TYPE_NAME.txt You'll want to purge those after a lot of testing.
