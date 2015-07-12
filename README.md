@@ -11,7 +11,7 @@ To simplify the cURL commands, this uses Sense from the Marvel plugin.
 3) ./senseGenerator.sh INDEX_NAME TYPE_NAME
 INDEX_NAME is usually matches the json file, like 'consultations'.
 TYPE_NAME is usually just for debugging like 'test1'
-4) This will have copied all the curl command to your clipboard. Simply paste into the Sense window and run.
+4) This will have copied all the curl command to your clipboard. Simply paste into the Sense window and run. It will have also created a file INDEX_NAME_TYPE_NAME.txt You'll want to purge those after a lot of testing.
 
 ===Marvel===
 To insall marvel on linux:
