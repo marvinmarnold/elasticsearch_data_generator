@@ -1,9 +1,5 @@
 Some useful files for creating test data for Kibana using the marvel plugin.
 
-###Steps
-1. Generate Data
-2. Paste into Sense
-
 Generate Data
 =============
 Using http://beta.json-generator.com/ to generate JSON that can be used in Marvel. The site has a good example, and consultationsGenerator.js has an example file I used.
