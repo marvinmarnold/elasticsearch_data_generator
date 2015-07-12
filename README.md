@@ -1,7 +1,6 @@
 Some useful files for creating test data for Kibana using the marvel plugin.
 
-Steps:
-
+#Steps
 1. Generate Data
 2. Paste into Sense
 
