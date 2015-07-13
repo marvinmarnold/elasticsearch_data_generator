@@ -16,11 +16,15 @@
         }
       },
       method_i: function() {
-        var p = integer(0,100);
-        if (p < 80) {
-          return 0;
+        if(this.state_i === 1) {
+          var p = integer(0,100);
+          if (p < 80) {
+            return 1;
+          } else {
+            return 2;
+          }
         } else {
-          return 1;
+          return 0;
         }
       },
       state: function() {
@@ -28,8 +32,8 @@
         return states[this.state_i];
       },
       method: function() {
-        var types = ['Credit', 'Bank'];
-        return states[this.state_i];
+        var types = ["unsubmitted", 'Credit', 'Bank'];
+        return types[this.method_i];
       },
       country: function() {
         var countries = ['SouthAfrica', 'Mexico', 'Poland'];
@@ -44,49 +48,31 @@
         }
         return countries[i];
       },
-      daysCompletionApproval: function() {
-        if(this.state_i === 3) {
+      revenue: function() {
+        if(this.state_i === 1) {
+          return 100;
+        } else {
+          return 0;
+        }
+      },
+      daysCompletionPayment: function() {
+        if(this.state_i === 1) {
           var p = integer(0,100);
-          if (p < 30) {
+          if (p < 20) {
             return 0;
-          } else if (p < 70) {
+          } else if (p < 40) {
             return 1;
-          } else if (p < 90) {
-            return integer(2,4);
-          } else {
-            return integer(5,14);
+          } else if (p < 45) {
+            return 2;
+          } else if (p < 50) {
+            return 3;
+          } else if (p < 80) {
+            return integer(4,7);
+          } else if (p < 95) {
+            return integer(8,14);
+          }else {
+            return integer(15,40);
           }
-        } else {
-          return -1;
-        }
-      },
-      visitedAt: function() {
-        var date = new Date(this.today);
-        return date.getFullYear() + "" + ("0" + (date.getMonth() + 1)).slice(-2) + "" + ("0" + date.getDate()).slice(-2);
-      },
-      startedAt: function() {
-        var daysLater = integer(0, 3);
-        if(this.state_i > 0) {
-          var date = new Date(this.today + this.aDay * daysLater);
-          return date.getFullYear() + "" + ("0" + (date.getMonth() + 1)).slice(-2) + "" + ("0" + date.getDate()).slice(-2);
-        } else {
-          return -1;
-        }
-      },
-      completedAt: function() {
-        var daysLater = integer(0, 7);
-        if(this.state_i > 1) {
-          var date = new Date(this.today + this.aDay * daysLater);
-          return date.getFullYear() + "" + ("0" + (date.getMonth() + 1)).slice(-2) + "" + ("0" + date.getDate()).slice(-2);
-        } else {
-          return -1;
-        }
-      },
-      approvedAt: function() {
-        var daysLater = integer(0, 7);
-        if(this.state_i > 2) {
-          var date = new Date(this.today + this.aDay * daysLater);
-          return date.getFullYear() + "" + ("0" + (date.getMonth() + 1)).slice(-2) + "" + ("0" + date.getDate()).slice(-2);
         } else {
           return -1;
         }
