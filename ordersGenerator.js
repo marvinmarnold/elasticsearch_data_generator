@@ -2,9 +2,9 @@
   {
     'repeat:100': {
       aDay: function() {
-      return 60*60*24*1000;
+        return 60*60*24*1000;
       },
-      today: function() {
+      date: function() {
         return new Date((new Date()).getTime() - this.aDay * integer(0, 365));
       },
       state_i: function() {

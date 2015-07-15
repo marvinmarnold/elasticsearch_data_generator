@@ -2,9 +2,9 @@
   {
     'repeat:100': {
       aDay: function() {
-      return 60*60*24*1000;
+        return 60*60*24*1000;
       },
-      today: function() {
+      date: function() {
         return new Date((new Date()).getTime() - this.aDay * integer(0, 365));
       },
       // _id: '{{objectId()}}',
@@ -21,11 +21,7 @@
         }
       },
       state: function() {
-        var states = ['unsubmitted', 'received'];
-        return states[this.state_i];
-      },
-      type: function() {
-        var states = ['Credit', 'Bank'];
+        var states = ['visited', 'started', 'completed', 'approved'];
         return states[this.state_i];
       },
       country: function() {
@@ -46,44 +42,13 @@
           var p = integer(0,100);
           if (p < 30) {
             return 0;
-          } else if (p < 70) {
+          } else if (p < 50) {
             return 1;
-          } else if (p < 90) {
+          } else if (p < 80) {
             return integer(2,4);
           } else {
-            return integer(5,14);
+            return integer(5,7);
           }
-        } else {
-          return -1;
-        }
-      },
-      visitedAt: function() {
-        var date = new Date(this.today);
-        return date.getFullYear() + "" + ("0" + (date.getMonth() + 1)).slice(-2) + "" + ("0" + date.getDate()).slice(-2);
-      },
-      startedAt: function() {
-        var daysLater = integer(0, 3);
-        if(this.state_i > 0) {
-          var date = new Date(this.today + this.aDay * daysLater);
-          return date.getFullYear() + "" + ("0" + (date.getMonth() + 1)).slice(-2) + "" + ("0" + date.getDate()).slice(-2);
-        } else {
-          return -1;
-        }
-      },
-      completedAt: function() {
-        var daysLater = integer(0, 7);
-        if(this.state_i > 1) {
-          var date = new Date(this.today + this.aDay * daysLater);
-          return date.getFullYear() + "" + ("0" + (date.getMonth() + 1)).slice(-2) + "" + ("0" + date.getDate()).slice(-2);
-        } else {
-          return -1;
-        }
-      },
-      approvedAt: function() {
-        var daysLater = integer(0, 7);
-        if(this.state_i > 2) {
-          var date = new Date(this.today + this.aDay * daysLater);
-          return date.getFullYear() + "" + ("0" + (date.getMonth() + 1)).slice(-2) + "" + ("0" + date.getDate()).slice(-2);
         } else {
           return -1;
         }
